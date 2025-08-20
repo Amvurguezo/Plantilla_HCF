@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANTILLA LLAMADA CMPC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body bgcolor="red">
+   <div class="container">
+    <!-- Sección de formulario -->
+    <div class="title">PLANTILLA LLAMADA HCF</div>
+    <form id="myForm" onsubmit="return copyToClipboard(event)">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Nombre</span>
+                <input type="text" id="nombre" placeholder="Nombre Completo">
+            </div>
+            <div class="input-box">
+                <span class="details">Área</span>
+                <input type="text" id="area" placeholder="Área">
+            </div>
+            <div class="input-box">
+                <span class="details">Anexo</span>
+                <input type="text" id="anexo" placeholder="Teléfono Fijo">
+            </div>
+            <div class="input-box">
+                <span class="details">Ubicación</span>
+                <input type="text" id="ubicacion" placeholder="HCF">
+            </div>
+            <div class="input-box">
+                <span class="details">ID PC</span>
+                <input type="text" id="pc" placeholder="ID de Equipo">
+            </div>
+            <div class="input-box description">
+                <span class="details">Detalle</span>
+                <textarea id="descripcion" placeholder="Detalle"></textarea>
+            </div>
+        </div>
+        <div class="button-container">
+            <input type="reset" value="Limpiar" id="Limpiar">
+            <input type="button" value="Copiar" id="Copiar" onclick="copyToClipboard()">
+        </div>
+    </form>
+   </div>
+
+   <!-- Secciones a la derecha -->
+   <div class="container right">
+    <!-- Sección adicional 1: CIERRE TICKETS -->
+    <div class="section">
+        <h2>CIERRE TICKETS</h2>
+        <div class="button-group">
+            <button id="cambioContraseña1">Cambio de Contraseña</button>
+            <button id="desbloqueoContraseña">Desbloqueo de Contraseña</button>
+            <button id="usuarioNuevo1">Disponible</button>
+            <button id="entregaInformacion">Disponible</button>
+        </div>
+    </div>
+
+    <!-- Sección adicional 2: RESPUESTAS -->
+    <div class="section">
+        <h2>RESPUESTAS</h2>
+        <div class="button-group">
+            <button id="cambioContraseña2">Extensión Dennise</button>
+            <button id="usuarioNuevo2">Disponible</button>
+            <button id="instalarAplicativo">Disponible</button>
+            <button id="formularioSap">Disponible</button>
+            <button id="accesoCarpeta">Disponible</button>
+            <button id="powerBi">Disponible</button>
+            <button id="roaming">Disponible</button>
+            <button id="googleDrive">Disponible</button>
+            <button id="caServiceDesk">Disponible</button>
+        </div>
+    </div>
+</div>
+</div>
+   <script src="script.js"></script>
+</body>
+</html>
+
+
