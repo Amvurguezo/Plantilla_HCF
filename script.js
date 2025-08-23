@@ -87,8 +87,8 @@ document.getElementById('sistemModif').addEventListener('click', () => {
 
 // Nuevos botones
 
-document.getElementById('instalarAplicativo').addEventListener('click', () => {
-    copyToClipboardText('Estimado,\n\nJunto con saludar, queremos informar que para dar gestión a su solicitud, es necesario indicar la siguiente información del software:\n\n*Nombre completo de software:\n*URL de descarga:\n*Versión del software a instalar:\n*Utilidad que se le dará al software:\n*Adjuntar aprobación de la jefatura:\n\n');
+document.getElementById('sistemIntegracion').addEventListener('click', () => {
+    copyToClipboardText('Buen día\n\nPor favor su ayuda con la integración del paciente según el correo de arrastre.\n\n');
 });
 
 document.getElementById('formularioSap').addEventListener('click', () => {
@@ -114,6 +114,7 @@ document.getElementById('googleDrive').addEventListener('click', () => {
 document.getElementById('caServiceDesk').addEventListener('click', () => {
     copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
 });
+
 
 
 
