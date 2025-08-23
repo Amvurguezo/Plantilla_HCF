@@ -81,8 +81,8 @@ document.getElementById('extensionDennise').addEventListener('click', () => {
 copyToClipboardText('Buen día estimada,\n\nJunto con saludar solicitamos su autorización para extender vigencia de cuenta, adicional solicitamos por favor nos indique fecha de la misma.\n\n');
 });
 
-document.getElementById('usuarioNuevo2').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nSe le informa que se genera usuario y contraseña:\n\n');
+document.getElementById('sistemSergioModif').addEventListener('click', () => {
+    copyToClipboardText('Buen día\n\nPor favor su apoyo con la modificación del sistema según el correo de arrastre.\n\n');
 });
 
 // Nuevos botones
@@ -114,5 +114,6 @@ document.getElementById('googleDrive').addEventListener('click', () => {
 document.getElementById('caServiceDesk').addEventListener('click', () => {
     copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
 });
+
 
 
