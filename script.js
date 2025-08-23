@@ -77,7 +77,7 @@ document.getElementById('entregaInformacion').addEventListener('click', () => {
     copyToClipboardText('Código de Cierre: FATE\nSolución de ticket: Entrega de información\n\n');
 });
 
-document.getElementById('cambioContraseña2').addEventListener('click', () => {
+document.getElementById('extensionDennise').addEventListener('click', () => {
 copyToClipboardText('Buen día estimada,\n\nJunto con saludar solicitamos su autorización para extender vigencia de cuenta, adicional solicitamos por favor nos indique fecha de la misma.\n\n');
 });
 
@@ -114,4 +114,5 @@ document.getElementById('googleDrive').addEventListener('click', () => {
 document.getElementById('caServiceDesk').addEventListener('click', () => {
     copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
 });
+
 
