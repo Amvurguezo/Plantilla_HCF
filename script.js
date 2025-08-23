@@ -91,8 +91,8 @@ document.getElementById('sistemIntegracion').addEventListener('click', () => {
     copyToClipboardText('Buen día\n\nPor favor su ayuda con la integración del paciente según el correo de arrastre.\n\n');
 });
 
-document.getElementById('formularioSap').addEventListener('click', () => {
-    copyToClipboardText('Estimado,\n\nJunto con saludar, informo que por directriz de funcionales SAP, es necesario enviar el siguiente formulario completado en su totalidad para poder atender el requerimiento; en caso de no recibir respectivo formulario su ticket será anulado en un periodo de 3 días hábiles.\n\nGracias.\n\nDe ser temas de AUTORIZACIÓN enviar el SU53\n\n');
+document.getElementById('cambioPassCorreo').addEventListener('click', () => {
+    copyToClipboardText('Buen día\n\nSe le informa que se realiza el cambio de contraseña para el correo de "Nombre usuario"\n\nCorreo:\nContraseña:\n\nPor favor, recuerde cambiar la contraseña en el próximo inicio de sesión para garantizar la seguridad de su cuenta\n\n');
 });
 
 document.getElementById('accesoCarpeta').addEventListener('click', () => {
@@ -114,6 +114,7 @@ document.getElementById('googleDrive').addEventListener('click', () => {
 document.getElementById('caServiceDesk').addEventListener('click', () => {
     copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
 });
+
 
 
 
