@@ -177,32 +177,52 @@ textarea {
 #Copiar:hover {
   background-color: #4ce055; /* Verde más oscuro al pasar el ratón */
 }
+
+/**/
+/* Estilo específico para el botón Limpiar */
+#Limpiar {
+  background-color: #ed873c; /* Color rojo */
+}
+
+#Limpiar:hover {
+  background-color: #e94e4b; /* Rojo más oscuro al pasar el ratón */
+}
+
+/* Estilo específico para el botón Copiar */
+#Copiar {
+  background-color: #5aff8c; /* Color verde */
+  color: black; /* Color del texto para que contraste con el fondo verde */
+}
+
+#Copiar:hover {
+  background-color: #4ce055; /* Verde más oscuro al pasar el ratón */
+}
 /**/
 
 /*Nuevo codigo*/
 
 .button-group button:nth-child(1) {
-  background-color: #5a78ff; /* Verde */
+  background-color: #91a5fc; /* Verde */
   color: black;
 }
 
 .button-group button:nth-child(2) {
-  background-color: #ec9716; /* Rojo */
+  background-color: #ed873c; /* Rojo */
   color: white;
 }
 
 .button-group button:nth-child(3) {
-  background-color: #ebce2b; /* Amarillo */
+  background-color: #e6d680; /* Amarillo */
   color: black;
 }
 
 .button-group button:nth-child(4) {
-  background-color: #16ac50; /* Azul claro */
+  background-color: #2a8a4f; /* Azul claro */
   color: white;
 }
 
 .button-group button:nth-child(5) {
-  background-color: #687cd4; /* Verde */
+  background-color: #5261a5; /* Verde */
   color: black;
 }
 
@@ -217,12 +237,12 @@ textarea {
 }
 
 .button-group button:nth-child(8) {
-  background-color: #1336cf; /* Verde */
+  background-color: #425bc7; /* Verde */
   color: rgb(243, 237, 237);
 }
 
 .button-group button:nth-child(9) {
-  background-color: #ff5af1; /* Verde */
+  background-color: #ca5ec1; /* Verde */
   color: black;
 }
 
@@ -254,6 +274,7 @@ textarea {
     flex: none;
   }
 }
+
 
 
 
