@@ -11,7 +11,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #1f1f21;
     padding: 20px;
 }
 
@@ -22,11 +22,12 @@ body {
 }
 
 .container {
-    background: #0C8CFD;
+    border: 2px solid white;
+    background: #181822;
     width: 100%;
     max-width: 450px;
     padding: 25px 30px;
-    border-radius: 7px;
+    border-radius: 8px;
     margin: 40px;
 }
 
@@ -35,11 +36,12 @@ body {
 }
 
 .container.right {
+    border: 2px solid white;
     width: 40%; /* Secciones CIERRE TICKETS y RESPUESTAS (35% del contenedor) */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: antiquewhite;
+    background-color: #181822;
 }
 
 .title {
@@ -237,6 +239,7 @@ textarea {
 .container.right .section:first-child {
     margin-bottom: 30px;
 }
+
 
 
 
