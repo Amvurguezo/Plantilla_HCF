@@ -69,8 +69,8 @@ document.getElementById('desbloqueoContraseña').addEventListener('click', () =>
     copyToClipboardText('Se realiza el desbloqueo de usuario y se le indica al usuario, se valida el acceso.');
 });
 
-document.getElementById('usuarioNuevo1').addEventListener('click', () => {
-    copyToClipboardText('Se genera extensión de cuenta y se envian las credenciales de acceso al usuario');
+document.getElementById('revisarBloqueos').addEventListener('click', () => {
+    copyToClipboardText('Se realiza revisión en base de datos y no se encuentran bloqueos, se procede con cierre de ticket.');
 });
 
 document.getElementById('entregaInformacion').addEventListener('click', () => {
@@ -114,6 +114,7 @@ document.getElementById('googleDrive').addEventListener('click', () => {
 document.getElementById('caServiceDesk').addEventListener('click', () => {
     copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
 });
+
 
 
 
