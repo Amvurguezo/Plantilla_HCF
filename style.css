@@ -223,7 +223,7 @@ textarea {
 
 .button-group button:nth-child(5) {
   background-color: #5261a5; /* Verde */
-  color: black;
+  color: white;
 }
 
 .button-group button:nth-child(6) {
@@ -274,6 +274,7 @@ textarea {
     flex: none;
   }
 }
+
 
 
 
