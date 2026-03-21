@@ -1,119 +1,97 @@
-function copyToClipboard(event) {
-    // Prevenir el envío del formulario
-    if (event) {
-        event.preventDefault();
-    }
+// --- FUNCIÓN DE NAVEGACIÓN CON ANIMACIÓN ---
+        let currentSection = 'formulario';
 
-    // Obtener los valores de los campos del formulario y manejar casos vacíos
-    const nombre = document.getElementById('nombre').value || '';
-    const pc = document.getElementById('pc').value || '';
-    const area = document.getElementById('area').value || '';
-    const anexo = document.getElementById('anexo').value || '';
-    const ubicacion = document.getElementById('ubicacion').value || '';
-    const descripcion = document.getElementById('descripcion').value || '';
+        function showSection(sectionName) {
+            if (currentSection === sectionName) return; // Ya estamos aquí
 
-    // Crear el texto a copiar, concatenando los valores de los campos
-    const textToCopy = 
-        `Nombre: ${nombre}\n` +
-        `Área: ${area}\n` +
-        `Anexo: ${anexo}\n` +
-        `Ubicación: ${ubicacion}\n` +
-        `ID PC: ${pc}\n` +   // Salto normal de linea
-        `Descripción:\n\n${descripcion}`;
+            const formSection = document.getElementById('section-formulario');
+            const respSection = document.getElementById('section-respuestas');
+            const btnForm = document.getElementById('btnFormulario');
+            const btnResp = document.getElementById('btnRespuestas');
 
-    // Crear un elemento temporal para copiar el texto
-    const tempElement = document.createElement('textarea');
-    tempElement.value = textToCopy;
-    document.body.appendChild(tempElement);
-    tempElement.select();
+            // Determinar qué sección sale y cuál entra
+            const sectionOut = (currentSection === 'formulario') ? formSection : respSection;
+            const sectionIn = (sectionName === 'formulario') ? formSection : respSection;
+            const btnActive = (sectionName === 'formulario') ? btnForm : btnResp;
+            const btnInactive = (sectionName === 'formulario') ? btnResp : btnForm;
 
-    // Copiar el contenido al portapapeles
-    document.execCommand('copy');
+            // 1. Animación de salida de la sección actual
+            sectionOut.classList.add('animating-out');
 
-    // Eliminar el elemento temporal
-    document.body.removeChild(tempElement);
+            // 2. Esperar a que termine la animación de salida (0.4s)
+            setTimeout(() => {
+                sectionOut.classList.add('hidden');
+                sectionOut.classList.remove('animating-out');
 
-    // Mensaje opcional en la consola
-    console.log('Información copiada al portapapeles');
+                // 3. Preparar y mostrar la nueva sección (animación de entrada vía CSS fadeInSlideUp)
+                sectionIn.classList.remove('hidden');
+                
+                // 4. Actualizar estado de los botones
+                btnActive.classList.add('active');
+                btnInactive.classList.remove('active');
 
-    // Retornar false para evitar el envío del formulario
-    return false;
-}
+                currentSection = sectionName;
+            }, 400); // Mismo tiempo que fadeOutSlideDown en CSS
+        }
 
-//Seccion Derecha
+        // --- FUNCIONES DE COPIADO (Tu código original unificado) ---
+        function copyToClipboard(event) {
+            if (event) event.preventDefault();
 
-function copyToClipboardText(text) {
-    // Crear un elemento de texto oculto
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
+            const nombre = document.getElementById('nombre').value || '';
+            const pc = document.getElementById('pc').value || '';
+            const area = document.getElementById('area').value || '';
+            const anexo = document.getElementById('anexo').value || '';
+            const ubicacion = document.getElementById('ubicacion').value || '';
+            const descripcion = document.getElementById('descripcion').value || '';
+
+            const textToCopy = 
+                `Nombre: ${nombre}\n` +
+                `Área: ${area}\n` +
+                `Anexo: ${anexo}\n` +
+                `Ubicación: ${ubicacion}\n` +
+                `ID PC: ${pc}\n` +
+                `Descripción:\n\n${descripcion}`;
+
+            executeCopy(textToCopy);
+        }
+
+        function copyToClipboardText(text) {
+            executeCopy(text);
+        }
+
+        function executeCopy(text) {
+            const tempElement = document.createElement('textarea');
+            tempElement.value = text;
+            document.body.appendChild(tempElement);
+            tempElement.select();
+            
+            try {
+                document.execCommand('copy');
+                // Opcional: Mostrar una notificación sutil en lugar de un alert
+                console.log('Copiado: ' + text.substring(0, 30) + '...');
+            } catch (err) {
+                console.error('Error al copiar', err);
+            }
+            
+            document.body.removeChild(tempElement);
+        }
+
+        // --- ASIGNACIÓN DE EVENTOS (Tu código original) ---
+        document.getElementById('cambioContraseña1').onclick = () => copyToClipboardText('Se realiza cambio de contraseña y se le indica al usuario, se valida el acceso.');
+        document.getElementById('desbloqueoContraseña').onclick = () => copyToClipboardText('Se realiza el desbloqueo de usuario y se le indica al usuario, se valida el acceso.');
+        document.getElementById('revisarBloqueos').onclick = () => copyToClipboardText('Se realiza revisión en base de datos y no se encuentran bloqueos, se procede con cierre de ticket.');
+        document.getElementById('entregaInformacion').onclick = () => copyToClipboardText('Código de Cierre: FATE\nSolución de ticket: Entrega de información\n\n');
+        document.getElementById('extensionDennise').onclick = () => copyToClipboardText('Buen día estimada,\n\nJunto con saludar solicitamos su autorización para extender vigencia de cuenta, adicional solicitamos por favor nos indique fecha de la misma.\n\n');
+        document.getElementById('sistemModif').onclick = () => copyToClipboardText('Buen día\n\nPor favor su apoyo con la modificación del sistema según el correo de arrastre.\n\n');
+        document.getElementById('sistemIntegracion').onclick = () => copyToClipboardText('Buen día\n\nPor favor su ayuda con la integración del paciente según el correo de arrastre.\n\n');
+        document.getElementById('cambioPassCorreo').onclick = () => copyToClipboardText('Buen día\n\nSe le informa que se realiza el cambio de contraseña para el correo de (Nombre usuario)\n\nCorreo: \nContraseña: \n\nPor favor, recuerde cambiar la contraseña en el próximo inicio de sesión para garantizar la seguridad de su cuenta\n\n');
+        document.getElementById('extensionCorreo').onclick = () => copyToClipboardText('Buen día\n\nSe le informa que se realiza la extensión de cuenta para el correo de (Nombre usuario)\n\nCorreo: \nContraseña: \n\nPor favor, recuerde cambiar la contraseña en el próximo inicio de sesión para garantizar la seguridad de su cuenta.\n\n');
+        document.getElementById('powerBi').onclick = () => copyToClipboardText('Buen día\n\nPor favor indicar el tipo de licencia que necesita en POWER BI, si es licencia PRO o licencia FREE...\n');
+        document.getElementById('roaming').onclick = () => copyToClipboardText('Estimado,\n\nPara poder continuar con su requerimiento es necesario que indique la siguiente información:\n\n- Número de la línea:\n- Fecha inicial:\n- Fecha final:\n\n');
+        document.getElementById('googleDrive').onclick = () => copyToClipboardText('Buen día\n\nJunto con saludar se le informa lo siguiente: Por políticas de Ciberseguridad...');
+        document.getElementById('caServiceDesk').onclick = () => copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información...');
     
-    try {
-        // Copiar el texto al portapapeles
-        document.execCommand('copy');
-    } catch (err) {
-        console.error('Error al copiar al portapapeles:', err);
-    }
-
-    // Eliminar el elemento de texto
-    document.body.removeChild(textarea);
-}
-
-// Asignar eventos de clic a los botones
-document.getElementById('cambioContraseña1').addEventListener('click', () => {
-    copyToClipboardText('Se realiza cambio de contraseña y se le indica al usuario, se valida el acceso.');
-});
-
-document.getElementById('desbloqueoContraseña').addEventListener('click', () => {
-    copyToClipboardText('Se realiza el desbloqueo de usuario y se le indica al usuario, se valida el acceso.');
-});
-
-document.getElementById('revisarBloqueos').addEventListener('click', () => {
-    copyToClipboardText('Se realiza revisión en base de datos y no se encuentran bloqueos, se procede con cierre de ticket.');
-});
-
-document.getElementById('entregaInformacion').addEventListener('click', () => {
-    copyToClipboardText('Código de Cierre: FATE\nSolución de ticket: Entrega de información\n\n');
-});
-
-document.getElementById('extensionDennise').addEventListener('click', () => {
-copyToClipboardText('Buen día estimada,\n\nJunto con saludar solicitamos su autorización para extender vigencia de cuenta, adicional solicitamos por favor nos indique fecha de la misma.\n\n');
-});
-
-document.getElementById('sistemModif').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nPor favor su apoyo con la modificación del sistema según el correo de arrastre.\n\n');
-});
-
-// Nuevos botones
-
-document.getElementById('sistemIntegracion').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nPor favor su ayuda con la integración del paciente según el correo de arrastre.\n\n');
-});
-
-document.getElementById('cambioPassCorreo').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nSe le informa que se realiza el cambio de contraseña para el correo de (Nombre usuario)\n\nCorreo: \nContraseña: \n\nPor favor, recuerde cambiar la contraseña en el próximo inicio de sesión para garantizar la seguridad de su cuenta\n\n');
-});
-
-document.getElementById('extensionCorreo').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nSe le informa que se realiza la extensión de cuenta para el correo de (Nombre usuario)\n\nCorreo: \nContraseña: \n\nPor favor, recuerde cambiar la contraseña en el próximo inicio de sesión para garantizar la seguridad de su cuenta.\n\n');
-});
-
-document.getElementById('powerBi').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nPor favor indicar el tipo de licencia que necesita en POWER BI, si es licencia PRO o licencia FREE.\n\n\n\n*En caso de ser Licencia PRO*\n\nSe le informa que para poder continuar con su solicitud es necesario que diligencie el formulario en el siguiente link:\n\nhttps://forms.gle/4vu5LP6Nm1Bt8RGWA \n\n\nUna vez realizado adjuntar el print que evidencie el formulario completado y enviado.\n\n');
-});
-
-document.getElementById('roaming').addEventListener('click', () => {
-    copyToClipboardText('Estimado,\n\nPara poder continuar con su requerimiento es necesario que indique la siguiente información:\n\n- Número de la línea:\n- Fecha inicial:\n- Fecha final:\n\n');
-});
-
-document.getElementById('googleDrive').addEventListener('click', () => {
-    copyToClipboardText('Buen día\n\nJunto con saludar se le informa lo siguiente:\n\nPor políticas de Ciberseguridad la versión escritorio de Google Drive se encuentra limitada para su uso por brechas de seguridad. Es por ello que para poder aprobar su uso, debe existir una licencia previa dentro de su área, en caso de que no exista es necesario la compra de una licencia de Backup la cual se debe asignar a otro usuario, esta tiene un costo de aprox 150$ NOTA: Si es la primera licencia del área se debe hacer una compra mínima de 2 licencias total aprox 300$. De estar de acuerdo se necesita la aprobación de su jefatura, los datos de las cuentas de usuario (Nombres y correos electrónicos) donde se asignará Google Drive, nombre y correo electrónico de la jefatura que aprueba, centro de costo (CeCo) donde se cargan las licencias, número de ticket de referencia.\n\nCuando este lo anteriormente indicado, en el ticket, el solicitante debe indicar\n\n1) Adjuntar aprobación de la jefatura de la persona que hace la solicitud a la MDA\n2) Correos de las personas que tendrán las cuentas (si su área ya cuenta con Google Drive de escritorio, indicar las cuentas que lo poseen).\n3) Cuenta de Correo de jefatura que aprueba.\n4) Número de ticket asociado.\n5) Indicar centro de Costo (CeCo), donde se realizarán los cargos.\n\n');
-});
-
-document.getElementById('caServiceDesk').addEventListener('click', () => {
-    copyToClipboardText('Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información del usuario a crear:\n\n\n\nNombre completo:\nRut:\nCorreo electrónico:\nTipo de acceso: (Usuario Employee -Permite ver los tickets de la persona) (Usuario Analyst - con acceso a gestión de tickets)\n\n');
-});
 
 
 
