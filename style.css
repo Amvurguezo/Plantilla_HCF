@@ -1,288 +1,233 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+/* --- Importación de Fuente y Estilos Base --- */
+        @import url("https://fonts.googleapis.com/css?family=Poppins");
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-body {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background-color: #1f1f21;
-  padding: 20px;
-}
+        body {
+            display: flex;
+            flex-direction: column; /* Para colocar la nav arriba */
+            min-height: 100vh;
+            justify-content: flex-start; /* Comienza desde arriba */
+            align-items: center;
+            background-color: #1f1f21;
+            padding: 20px;
+            padding-top: 40px; /* Espacio extra arriba */
+        }
 
-.main-container {
-  display: flex;
-  page: 20px;
-  width: 90%;
-  max-width: 1200px;
-}
+        /* --- Estilos de la Navegación (Pestañas) --- */
+        .tabs-nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 450px; /* Alineado con el ancho del formulario */
+        }
 
-.container {
-  border: 2px solid white;
-  background: #181822;
-  width: 100%;
-  max-width: 450px;
-  padding: 25px 30px;
-  border-radius: 12px;
-  margin: 40px;
-}
+        .tab-button {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ed873c; /* Color naranja principal */
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
-.container.left {
-  width: 60%; /* Sección del formulario (60% del contenedor) */
-  color: white;
-}
+        .tab-button.active {
+            background: #ed873c;
+            color: #181822; /* Color de fondo oscuro */
+            box-shadow: 0 4px 10px rgba(237, 135, 60, 0.3);
+        }
 
-.container.right {
-  border: 2px solid white;
-  border-radius: 12px;
-  padding: 20px;
-  width: 40%; /* Secciones CIERRE TICKETS y RESPUESTAS (35% del contenedor) */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #181822;
-}
+        /* --- Contenedor Principal para las Secciones --- */
+        .sections-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-/*Plantilla Llamada HCF*/
-.title {
-  font-size: 25px;
-  font-weight: 600;
-  color: #ed873c;
-  margin-bottom: 20px;
-  text-align: center;
-}
+        /* --- Estilos Comunes de los Contenedores (Formulario y Respuestas) --- */
+        .container {
+            border: 2px solid white;
+            background: #181822;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px 30px;
+            border-radius: 12px;
+            color: white;
+            
+            /* Animación de entrada */
+            animation: fadeInSlideUp 0.5s ease forwards;
+            position: relative; /* Para el fade out */
+        }
 
-/*Formulario*/
-.user-details {
-  display: flex;
-  flex-direction: column;
-}
+        /* Clase para ocultar secciones (con animación de salida) */
+        .container.hidden {
+            display: none;
+            /* Si quieres animación de salida completa, se requiere JS más complejo, 
+               pero display:none es más limpio para el formulario */
+        }
 
-.input-box {
-  margin-bottom: 20px;
-  width: 100%;
-  gap: 6px;
-}
+        /* --- Animaciones CSS --- */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.details {
-  font-weight: 500;
-  margin-bottom: 5px;
-  display: block;
-  color: white;
-  font-size: 18px;
-}
+        @keyframes fadeOutSlideDown {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
 
-input,
-textarea {
-  width: 100%;
-  padding-left: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  height: 35px;
-}
+        /* Clase para aplicar la animación de salida vía JS */
+        .container.animating-out {
+            animation: fadeOutSlideDown 0.4s ease forwards;
+        }
 
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
+        /* --- Estilos Específicos del Formulario --- */
+        .title {
+            font-size: 25px;
+            font-weight: 600;
+            color: #ed873c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-}
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
 
-.button-container input[type="button"],
-.button-container input[type="reset"] {
-  width: 48%;
-  height: 45px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        .input-box {
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
-.button-container input[type="reset"] {
-  background: #ed873c;
-  color: white;
-}
+        .details {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: white;
+            font-size: 18px;
+        }
 
-.button-container input[type="submit"] {
-  background: #5aff8c;
-  color: black;
-}
+        input, textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+        }
 
-.button-container input[type="submit"]:hover {
-  background: #e94e4b;
-}
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
 
-.button-container input[type="reset"]:hover {
-  background: #ff5a5f;
-}
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
 
-/* Estilos para CIERRE TICKETS y RESPUESTAS */
-.section {
-  margin-bottom: 20px;
-}
+        .button-container input {
+            width: 48%;
+            height: 45px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.section h2 {
-  color: white;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+        #Limpiar {
+            background: #ed873c;
+            color: white;
+        }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+        #Copiar {
+            background: #5aff8c;
+            color: black;
+        }
 
-.button-group button {
-  padding: 10px;
-  background-color: #5aff8c;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+        #Limpiar:hover, #Copiar:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
 
-.button-group button:hover {
-  background-color: #e94e4b;
-}
+        /* --- Estilos Específicos de las Respuestas --- */
+        .section {
+            margin-bottom: 25px;
+        }
 
-/**/
-/* Estilo específico para el botón Limpiar */
-#Limpiar {
-  background-color: #ed873c; /* Color rojo */
-}
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ed873c;
+            padding-bottom: 5px;
+        }
 
-#Limpiar:hover {
-  background-color: #e94e4b; /* Rojo más oscuro al pasar el ratón */
-}
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-/* Estilo específico para el botón Copiar */
-#Copiar {
-  background-color: #5aff8c; /* Color verde */
-  color: black; /* Color del texto para que contraste con el fondo verde */
-}
+        .button-group button {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-#Copiar:hover {
-  background-color: #4ce055; /* Verde más oscuro al pasar el ratón */
-}
+        .button-group button:hover {
+            opacity: 0.7;
+            transform: translateX(5px);
+        }
 
-/**/
-/* Estilo específico para el botón Limpiar */
-#Limpiar {
-  background-color: #ed873c; /* Color rojo */
-}
+        /* Colores específicos de tus botones de respuesta */
+        .button-group button:nth-child(1) { background-color: #91a5fc; color: black; }
+        .button-group button:nth-child(2) { background-color: #ed873c; color: black; }
+        .button-group button:nth-child(3) { background-color: #e6d680; color: black; }
+        .button-group button:nth-child(4) { background-color: #2a8a4f; color: white; }
+        .button-group button:nth-child(5) { background-color: #5261a5; color: white; }
+        .button-group button:nth-child(6) { background-color: #ff9c5a; color: black; }
+        .button-group button:nth-child(7) { background-color: #b49d1c; color: black; }
+        .button-group button:nth-child(8) { background-color: #425bc7; color: white; }
+        .button-group button:nth-child(9) { background-color: #ca5ec1; color: black; }
 
-#Limpiar:hover {
-  background-color: #e94e4b; /* Rojo más oscuro al pasar el ratón */
-}
-
-/* Estilo específico para el botón Copiar */
-#Copiar {
-  background-color: #5aff8c; /* Color verde */
-  color: black; /* Color del texto para que contraste con el fondo verde */
-}
-
-#Copiar:hover {
-  background-color: #4ce055; /* Verde más oscuro al pasar el ratón */
-}
-/**/
-
-/*Nuevo codigo*/
-
-.button-group button:nth-child(1) {
-  background-color: #91a5fc; /* Verde */
-  color: black;
-}
-
-.button-group button:nth-child(2) {
-  background-color: #ed873c; /* Rojo */
-  color: white;
-}
-
-.button-group button:nth-child(3) {
-  background-color: #e6d680; /* Amarillo */
-  color: black;
-}
-
-.button-group button:nth-child(4) {
-  background-color: #2a8a4f; /* Azul claro */
-  color: white;
-}
-
-.button-group button:nth-child(5) {
-  background-color: #5261a5; /* Verde */
-  color: white;
-}
-
-.button-group button:nth-child(6) {
-  background-color: #ff9c5a; /* Verde */
-  color: black;
-}
-
-.button-group button:nth-child(7) {
-  background-color: #b49d1c; /* Verde */
-  color: black;
-}
-
-.button-group button:nth-child(8) {
-  background-color: #425bc7; /* Verde */
-  color: rgb(243, 237, 237);
-}
-
-.button-group button:nth-child(9) {
-  background-color: #ca5ec1; /* Verde */
-  color: black;
-}
-
-/* Opcional: Efecto hover para todos los botones */
-.button-group button:hover {
-  opacity: 0.5;
-}
-
-/*Hasta aqui el nuevo codigo*/
-
-/* Ajuste para que las dos secciones a la derecha no se alarguen demasiado */
-.container.right .section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-}
-
-.container.right .section:first-child {
-  margin-bottom: 30px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .main-container {
-    flex-direction: column;
-  }
-  .container.right {
-    flex: none;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
+        /* --- Responsive --- */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            .tabs-nav {
+                max-width: 90%;
+            }
+        }
