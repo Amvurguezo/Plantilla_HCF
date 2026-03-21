@@ -16,7 +16,7 @@
             align-items: center;
             background-color: #1f1f21;
             padding: 20px;
-            padding-top: 40px; /* Espacio extra arriba */
+            padding-top: 10%; /* Espacio extra arriba */
         }
 
         /* --- Estilos de la Navegación (Pestañas) --- */
@@ -31,7 +31,7 @@
         .tab-button {
             flex: 1;
             padding: 12px;
-            border: 2px solid #ed873c; /* Color naranja principal */
+            border: 2px solid white; /* Color naranja principal */
             background: transparent;
             color: white;
             font-size: 16px;
@@ -42,9 +42,10 @@
         }
 
         .tab-button.active {
-            background: #ed873c;
+            background: #3caced;
             color: #181822; /* Color de fondo oscuro */
             box-shadow: 0 4px 10px rgba(237, 135, 60, 0.3);
+            border: none;
         }
 
         /* --- Contenedor Principal para las Secciones --- */
@@ -109,7 +110,7 @@
         .title {
             font-size: 25px;
             font-weight: 600;
-            color: #ed873c;
+            color: #3caced;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -155,22 +156,36 @@
         .button-container input {
             width: 48%;
             height: 45px;
-            border: none;
+            border: 2px solid white;
             border-radius: 5px;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         #Limpiar {
-            background: #ed873c;
+            background: black;
             color: white;
+            font-size: 16px;
+            border: 2px solid white;
         }
 
         #Copiar {
-            background: #5aff8c;
+            background: black;
+            color: white;
+        }
+
+        #Limpiar:hover {
+            background: #ed873c;
             color: black;
+            border: none;
+        }
+
+        #Copiar:hover {
+            background: #3caced;
+            color: black;
+            border: none;
         }
 
         #Limpiar:hover, #Copiar:hover {
@@ -186,7 +201,6 @@
         .section h2 {
             font-size: 20px;
             margin-bottom: 15px;
-            border-bottom: 1px solid #ed873c;
             padding-bottom: 5px;
         }
 
@@ -198,7 +212,9 @@
 
         .button-group button {
             padding: 12px;
-            border: none;
+            border: 2px solid white;
+            background: black;
+            color: white;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 500;
@@ -206,12 +222,16 @@
         }
 
         .button-group button:hover {
+            background: #3caced;
+            color: black;
+            border: 2px solid #3caced;
             opacity: 0.7;
-            transform: translateX(5px);
+            transform: translateX(2px);
         }
 
         /* Colores específicos de tus botones de respuesta */
-        .button-group button:nth-child(1) { background-color: #91a5fc; color: black; }
+
+        /* .button-group button:nth-child(1) { background-color: #91a5fc; color: black; }
         .button-group button:nth-child(2) { background-color: #ed873c; color: black; }
         .button-group button:nth-child(3) { background-color: #e6d680; color: black; }
         .button-group button:nth-child(4) { background-color: #2a8a4f; color: white; }
@@ -219,7 +239,7 @@
         .button-group button:nth-child(6) { background-color: #ff9c5a; color: black; }
         .button-group button:nth-child(7) { background-color: #b49d1c; color: black; }
         .button-group button:nth-child(8) { background-color: #425bc7; color: white; }
-        .button-group button:nth-child(9) { background-color: #ca5ec1; color: black; }
+        .button-group button:nth-child(9) { background-color: #ca5ec1; color: black; } */
 
         /* --- Responsive --- */
         @media (max-width: 500px) {
