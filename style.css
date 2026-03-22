@@ -147,6 +147,12 @@
             min-height: 100px;
         }
 
+        input:focus, textarea:focus {
+            outline: none;
+            border: 5px solid #3caced;
+            box-shadow: 0 0 8px rgba(52, 170, 220, 0.5);
+        }
+
         .button-container {
             display: flex;
             justify-content: space-between;
