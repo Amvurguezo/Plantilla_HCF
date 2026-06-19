@@ -8,6 +8,62 @@
 </head>
 <body>
 
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="top-navbar-brand">HCF Tools</div>
+        <div class="top-navbar-menu">
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" onclick="toggleToolsMenu(event)">
+                    <!-- Wrench / Tools icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                    Herramientas
+                    <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <ul class="nav-dropdown-list" id="toolsMenu">
+                    <li><a href="https://hospitalclinicofusat-my.sharepoint.com/:x:/g/personal/jesus_marriaga_ext_clinicasdelcobre_cl/IQAIvDXTIH9EQaQXwsoY_a30AcBS5N4nCAxrnAMNn8Uhisw?e=J8aeN9" target="_blank" rel="noopener noreferrer" onclick="toolAction('busqueda-bodegas')">🔍 Búsqueda Bodegas</a></li>
+                    <li><a href="https://hospitalclinicofusat.sharepoint.com/sites/BasedeConocimientosTI/Documentos compartidos/Forms/AllItems.aspx?CT=1749478224527&OR=OWA-NT-Mail&CID=e6e16618-dad9-aa3f-8186-31150f0a6fbe&e=5%3A9afba76a78214735b2268e031f8959c9&sharingv2=true&fromShare=true&at=9&FolderCTID=0x01200092FD48B945188F4F80EB4D6CDAD52D4D&id=%2Fsites%2FBasedeConocimientosTI%2FDocumentos compartidos%2FBase de Conocimientos" target="_blank" rel="noopener noreferrer" onclick="toolAction('kb-clinicas')">KB Clínicas</a></li>
+                    <li><a href="https://sondachile-my.sharepoint.com/:w:/r/personal/avidalu_sonda_com/Documents/%F0%9F%A7%A9BaseProcedimientos%F0%9F%A7%A9.docx?d=w4f4888da0c5349f19ee0081affc6069b&e=4%3a916ec05e3f7244f1a301c68fdfddcb7e&sharingv2=true&fromShare=true&at=9&xsdata=MDV8MDJ8amVzdXMubWFycmlhZ2FAc29uZGEuY29tfGYyMWJkNDkwNDMzZTQzNWZjZjNhMDhkZGJmMGVjYTQ2fGYxNDlkMGJjMGViNTRmOWE5ZTgyMjRhNzZlYWNmOGRlfDB8MHw2Mzg4NzY3OTI0MzI1NTIzODd8VW5rbm93bnxUV0ZwYkdac2IzZDhleUpGYlhCMGVVMWhjR2tpT25SeWRXVXNJbFlpT2lJd0xqQXVNREF3TUNJc0lsQWlPaUpYYVc0ek1pSXNJa0ZPSWpvaVRXRnBiQ0lzSWxkVUlqb3lmUT09fDB8fHw%3d&sdata=VlpYUUthZ0tWNCs0QTdhTlVvOTJoaGl0ajNuTHhXNDBmSDZib2pQTW5mOD0%3d" target="_blank" rel="noopener noreferrer" onclick="toolAction('kb-sonda')">KB Sonda</a></li>
+                    <li><a href="https://hospitalclinicofusat.sharepoint.com/:x:/r/sites/BasedeConocimientosTI/_layouts/15/doc2.aspx?sourcedoc=%7B1C1F4043-C359-4483-B8A2-92F9D98DD8A8%7D&file=Matriz externos.xlsx&action=default&mobileredirect=true&wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1744911583568&web=1&TeamsCID=d4c69e0a-2c26-4e05-badb-dc0b1182ecae" target="_blank" rel="noopener noreferrer" onclick="toolAction('matriz-externos')">Matriz Externos</a></li>
+                    <li><a href="https://hospitalclinicofusat.sharepoint.com/:x:/r/sites/BasedeConocimientosTI/_layouts/15/Doc.aspx?sourcedoc=%7BE0BC846C-3CF2-40DE-9ACA-D575E4B7D2CA%7D&file=Solicitantes Cuentas Legados.xlsx&action=default&mobileredirect=true" target="_blank" rel="noopener noreferrer" onclick="toolAction('solicitantes')">Solicitantes</a></li>
+                    <li class="has-submenu">
+                        <a href="#" onclick="toggleSubmenu(event, 'linksSubmenu')">
+                            🔗 Links
+                            <svg class="submenu-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 6 15 12 9 18"/>
+                            </svg>
+                        </a>
+                        <ul class="submenu" id="linksSubmenu">
+                            <li><a href="https://outlook.office.com/mail/inbox" target="_blank" rel="noopener noreferrer" onclick="linkAction('correo')">Correo</a></li>
+                            <li><a href="https://mesadeayuda.clinicasdelcobre.cl/WorkOrder.do?woMode=viewWO&woID=42141" target="_blank" rel="noopener noreferrer" onclick="linkAction('itsm')">ITSM</a></li>
+                            <li><a href="https://mesadeayuda.clinicasdelcobre.cl:8383/client#/login" target="_blank" rel="noopener noreferrer" onclick="linkAction('remoto')">Remoto</a></li>
+                            <li><a href="https://admin.microsoft.com/Adminportal/Home?source=applauncher#/users" target="_blank" rel="noopener noreferrer" onclick="linkAction('administrador')">Administrador</a></li>
+                            <li><a href="10.188.185.10/prodsaludMultiNav/" target="_blank" rel="noopener noreferrer" onclick="linkAction('sisalud')">Sisalud</a></li>
+                            <li><a href="w.redcdc.loc/logistico/rolesusuarios" target="_blank" rel="noopener noreferrer" onclick="linkAction('logistico')">Logístico</a></li>
+                            <li><a href="#" target="_blank" rel="noopener noreferrer" onclick="toggleSubmenu(event, 'privilegiosSubmenu')">Privilegios</a></li>
+                                <ul class="submenu" id="privilegiosSubmenu">
+                                    <li><a href="privilegios.fusat.cl" target="_blank" rel="noopener noreferrer" onclick="linkAction('antiguo')">Antigüo</a></li>
+                                    <li><a href="privilegios.clinicasdelcobre.cl" target="_blank" rel="noopener noreferrer" onclick="linkAction('nuevo')">Nuevo</a></li>
+                                </ul>
+                            <li><a href="10.211.30.25/fin700/" target="_blank" rel="noopener noreferrer" onclick="linkAction('fin700')">FIN 700</a></li>
+                            <li><a href="https://hospitalclinicofusat.sharepoint.com/:x:/r/sites/BasedeConocimientosTI/_layouts/15/Doc.aspx?sourcedoc=%7BF7C353CE-FF15-4655-A972-B9B3F86C737C%7D&file=2025-08-04_Maestro Dotacion.xlsx&action=default&mobileredirect=true" target="_blank" rel="noopener noreferrer" onclick="linkAction('maestro-dotacion')">Maestro Dotación</a></li>
+                            <li><a href="https://monitoreo.clinicasdelcobre.cl/public/login.htm?errorid=1&loginurl=%2Fwelcome.htm" target="_blank" rel="noopener noreferrer" onclick="linkAction('ptrg')">PTRG</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://wps.sondacorp.com/registro_actividades/" target="_blank" rel="noopener noreferrer" onclick="toolAction('productividad-sonda')">Productividad Sonda</a></li>
+                    <li><a href="https://sondachile-my.sharepoint.com/:x:/g/personal/vgonzalar_sonda_com/IQDToQdaJx7kQIwG6flwI_HvAZO5ZyxJNFmm5abJjclITsk?e=SetSGU" target="_blank" rel="noopener noreferrer" onclick="toolAction('horarios')">Horarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="tabs-nav">
         <button id="btnFormulario" class="tab-button active" onclick="showSection('formulario')">Llamada</button>
         <button id="btnRespuestas" class="tab-button" onclick="showSection('respuestas')">Respuestas</button>
@@ -36,7 +92,13 @@
                         <input type="text" id="ubicacion" placeholder="HCF">
                     </div>
                     <div class="input-box">
-                        <span class="details">ID PC</span>
+                        <span class="details">
+                            ID PC
+                            <label class="idpc-checkbox-label">
+                                <input type="checkbox" id="includeIdPc" checked>
+                                <span class="idpc-checkbox-text">Incluir al copiar</span>
+                            </label>
+                        </span>
                         <input type="text" id="pc" placeholder="ID de Equipo">
                     </div>
                     <div class="input-box">
@@ -44,7 +106,7 @@
                         <textarea id="descripcion" placeholder="Detalle"></textarea>
                     </div>
                 </div>
-                <div class="button-container">
+                <div class="button-container"> 
                     <input type="reset" value="Limpiar" id="Limpiar">
                     <input type="button" value="Copiar" id="Copiar" onclick="copyToClipboard(event)">
                 </div>
@@ -77,7 +139,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
