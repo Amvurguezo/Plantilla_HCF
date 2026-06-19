@@ -1,3 +1,84 @@
+// --- MENÚ HERRAMIENTAS ---
+        function toggleToolsMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById('toolsMenu');
+            const btn = event.currentTarget;
+            const isOpen = menu.classList.toggle('open');
+            btn.classList.toggle('active', isOpen);
+            // Close any open submenu when main menu toggles
+            if (!isOpen) closeAllSubmenus();
+        }
+
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault();
+            event.stopPropagation();
+            const submenu = document.getElementById(submenuId);
+            const parentLi = submenu.closest('.has-submenu');
+            const isOpen = submenu.classList.toggle('open');
+            parentLi.classList.toggle('submenu-open', isOpen);
+        }
+
+        function closeAllSubmenus() {
+            document.querySelectorAll('.submenu.open').forEach(s => s.classList.remove('open'));
+            document.querySelectorAll('.has-submenu.submenu-open').forEach(li => li.classList.remove('submenu-open'));
+        }
+
+        // Cerrar el menú al hacer clic fuera
+        document.addEventListener('click', function () {
+            const menu = document.getElementById('toolsMenu');
+            const btn = document.querySelector('.nav-dropdown-btn');
+            if (menu) menu.classList.remove('open');
+            if (btn) btn.classList.remove('active');
+            closeAllSubmenus();
+        });
+
+        function toolAction(tool) {
+            // Asigna URLs a cada herramienta cuando estén disponibles
+            const urls = {
+                'busqueda-bodegas':    '',
+                'kb-clinicas':         '',
+                'kb-sonda':            '',
+                'matriz-externos':     '',
+                'solicitantes':        '',
+                'productividad-sonda': '',
+                'horarios':            ''
+            };
+            const url = urls[tool];
+            if (url) {
+                window.open(url, '_blank');
+            } else {
+                console.log('Herramienta seleccionada:', tool, '(sin URL asignada aún)');
+            }
+            document.getElementById('toolsMenu').classList.remove('open');
+            document.querySelector('.nav-dropdown-btn').classList.remove('active');
+            closeAllSubmenus();
+        }
+
+        function linkAction(link) {
+            // Asigna URLs a cada link cuando estén disponibles
+            const urls = {
+                'correo':           '',
+                'itsm':             '',
+                'remoto':           '',
+                'administrador':    '',
+                'sisalud':          '',
+                'logistico':        '',
+                'privilegios':      '',
+                'fin700':           '',
+                'maestro-dotacion': '',
+                'ptrg':             ''
+            };
+            const url = urls[link];
+            if (url) {
+                window.open(url, '_blank');
+            } else {
+                console.log('Link seleccionado:', link, '(sin URL asignada aún)');
+            }
+            document.getElementById('toolsMenu').classList.remove('open');
+            document.querySelector('.nav-dropdown-btn').classList.remove('active');
+            closeAllSubmenus();
+        }
+
 // --- FUNCIÓN DE NAVEGACIÓN CON ANIMACIÓN ---
         let currentSection = 'formulario';
 
@@ -44,13 +125,14 @@
             const anexo = document.getElementById('anexo').value || '';
             const ubicacion = document.getElementById('ubicacion').value || '';
             const descripcion = document.getElementById('descripcion').value || '';
+            const includeIdPc = document.getElementById('includeIdPc').checked;
 
             const textToCopy = 
                 `Nombre: ${nombre}\n` +
                 `Área: ${area}\n` +
                 `Anexo: ${anexo}\n` +
                 `Ubicación: ${ubicacion}\n` +
-                `ID PC: ${pc}\n` +
+                (includeIdPc ? `ID PC: ${pc}\n` : '') +
                 `Descripción:\n\n${descripcion}`;
 
             executeCopy(textToCopy);
@@ -98,7 +180,6 @@
         asignarEvento('roaming', 'Estimado,\n\nPara poder continuar con su requerimiento es necesario que indique la siguiente información:\n\n- Número de la línea:\n- Fecha inicial:\n- Fecha final:\n\n');
         asignarEvento('googleDrive', 'Buen día\n\nJunto con saludar se le informa lo siguiente: Por políticas de Ciberseguridad...');
         asignarEvento('caServiceDesk', 'Buenas tardes\n\nPara poder continuar con su requerimiento es necesario la siguiente información...');
-    
 
 
 
